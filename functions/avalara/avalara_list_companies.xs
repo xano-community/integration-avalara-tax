@@ -7,7 +7,7 @@ function "avalara_list_companies" {
   }
   stack {
     var $creds { value = $env.AVALARA_ACCOUNT_ID ~ ":" ~ $env.AVALARA_LICENSE_KEY }
-    var $basic { value = "Basic " ~ ($creds|base64_encode) }
+    var $basic { value = "Authorization: Basic " ~ ($creds|base64_encode) }
 
     var $url { value = $env.AVALARA_BASE_URL ~ "/api/v2/companies" }
     var $sep { value = "?" }

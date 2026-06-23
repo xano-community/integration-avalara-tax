@@ -11,7 +11,7 @@ function "avalara_create_transaction" {
   }
   stack {
     var $creds { value = $env.AVALARA_ACCOUNT_ID ~ ":" ~ $env.AVALARA_LICENSE_KEY }
-    var $basic { value = "Basic " ~ ($creds|base64_encode) }
+    var $basic { value = "Authorization: Basic " ~ ($creds|base64_encode) }
 
     var $params {
       value = {

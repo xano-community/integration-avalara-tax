@@ -6,7 +6,7 @@ function "avalara_commit_transaction" {
   }
   stack {
     var $creds { value = $env.AVALARA_ACCOUNT_ID ~ ":" ~ $env.AVALARA_LICENSE_KEY }
-    var $basic { value = "Basic " ~ ($creds|base64_encode) }
+    var $basic { value = "Authorization: Basic " ~ ($creds|base64_encode) }
 
     var $url { value = $env.AVALARA_BASE_URL ~ "/api/v2/companies/" ~ ($input.company_code|url_encode) ~ "/transactions/" ~ ($input.transaction_code|url_encode) ~ "/commit" }
 
